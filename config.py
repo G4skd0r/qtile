@@ -32,6 +32,8 @@ from libqtile import bar, layout, widget, extension, hook
 from libqtile.config import Click, Drag, Group, Key, Screen
 from libqtile.lazy import lazy
 
+import iwlib
+
 # For the "Fn" keys
 from libqtile.dgroups import simple_key_binder
 
@@ -186,26 +188,48 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.TextBox(
+                "",
+                font = "FontAwesome",
+                fontsize = "14",
+                foreground = "#7ac5cd"
+                ),
+                widget.GroupBox(font='Hack',
+                active='#7ac5cd',
+                inactive='#bfbfbf'
+                ),
                 widget.Prompt(),
                 widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.CurrentLayout(padding='3'),
+                # hours
+                widget.Clock(
+                format='%H:%M',
+                font='Hack',
+                fontsize='14',
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
+                # days
+                widget.Clock(
+                format='%d-%m-%Y',
+                font="Hack",
+                fontsize="14",
+                ),
+                #widget.Notify(),
+                widget.BatteryIcon(),
+                widget.Volume(),
+                widget.Wlan(
+                disconnected_message='睊',
+                fontsize='14'
+                ),
+                widget.QuickExit(
+                font='FontAwesome',
+                default_text='' #Power-off Icon
+                ),
             ],
             24,
         ),
     ),
 ]
+
 
 # Drag floating layouts.
 mouse = [
