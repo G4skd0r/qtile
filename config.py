@@ -174,7 +174,7 @@ groups = []
 
 # FOR QWERTY KEYBOARDS
 group_names = ["1", "2", "3", "4", "5", "6",]
-group_labels = ["", "", "", "", "", "",]
+group_labels = ["", "", "", "", "", "",]
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
 
 for i in range(len(group_names)):
@@ -256,7 +256,7 @@ def init_widgets_list():
     widgets_list = [
                widget.GroupBox(font="FontAwesome",
                         fontsize = 18,
-                        margin_y = -1,
+                        margin_y = 0,
                         margin_x = 0,
                         padding_y = 6,
                         padding_x = 5,
@@ -297,13 +297,13 @@ def init_widgets_list():
                         text="  ",
                         background=colors[1],
                         padding = 0,
-#                        format='{char} {percent:2.0%}',
                         fontsize=16
                         ),
                widget.Battery(
                         font="Hack Nerd Font",
                         update_interval = 10,
                         fontsize = 12,
+                        format='{char} {percent:2.0%}',
                         foreground = colors[5],
                         background = colors[1],
 	                ),
@@ -339,10 +339,16 @@ def init_widgets_list():
                         ),
                widget.QuickExit(
                         backgrounf=colors[1],
-                        default_text="",
+                        default_text="  ",
                         countdown_format="[ {} s ]",
                         padding=4
                        ),
+                widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
               ]
     return widgets_list
 
@@ -378,43 +384,6 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []
 
-# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
-# BEGIN
-
-# @hook.subscribe.client_new
-# def assign_app_group(client):
-#     d = {}
-#     #########################################################
-#     ################ assgin apps to groups ##################
-#     #########################################################
-#     d["1"] = ["Navigator", "Firefox", "Vivaldi-stable", "Vivaldi-snapshot", "Chromium", "Google-chrome", "Brave", "Brave-browser",
-#               "navigator", "firefox", "vivaldi-stable", "vivaldi-snapshot", "chromium", "google-chrome", "brave", "brave-browser", ]
-#     d["2"] = [ "Atom", "Subl3", "Geany", "Brackets", "Code-oss", "Code", "TelegramDesktop", "Discord",
-#                "atom", "subl3", "geany", "brackets", "code-oss", "code", "telegramDesktop", "discord", ]
-#     d["3"] = ["Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh",
-#               "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
-#     d["4"] = ["Gimp", "gimp" ]
-#     d["5"] = ["Meld", "meld", "org.gnome.meld" "org.gnome.Meld" ]
-#     d["6"] = ["Vlc","vlc", "Mpv", "mpv" ]
-#     d["7"] = ["VirtualBox Manager", "VirtualBox Machine", "Vmplayer",
-#               "virtualbox manager", "virtualbox machine", "vmplayer", ]
-#     d["8"] = ["Thunar", "Nemo", "Caja", "Nautilus", "org.gnome.Nautilus", "Pcmanfm", "Pcmanfm-qt",
-#               "thunar", "nemo", "caja", "nautilus", "org.gnome.nautilus", "pcmanfm", "pcmanfm-qt", ]
-#     d["9"] = ["Evolution", "Geary", "Mail", "Thunderbird",
-#               "evolution", "geary", "mail", "thunderbird" ]
-#     d["0"] = ["Spotify", "Pragha", "Clementine", "Deadbeef", "Audacious",
-#               "spotify", "pragha", "clementine", "deadbeef", "audacious" ]
-#     ##########################################################
-#     wm_class = client.window.get_wm_class()[0]
-#
-#     for i in range(len(d)):
-#         if wm_class in list(d.values())[i]:
-#             group = list(d.keys())[i]
-#             client.togroup(group)
-#             client.group.cmd_toscreen()
-
-# END
-# ASSIGN APPLICATIONS TO A SPECIFIC GROUPNAME
 
 
 
