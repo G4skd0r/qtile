@@ -52,6 +52,32 @@ def window_to_next_group(qtile):
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
 
+
+battery = psutil.sensors_battery()
+percent = battery.percent
+icon = ''
+
+def batt_icon():
+    if (percent >= 0 and percent <= 24):
+        icon = ""
+        return icon
+    elif (percent >= 25 and percent <= 49):
+        icon = ""
+        return icon
+    elif (percent >= 50 and percent <= 74):
+        icon = ""
+        return icon
+    elif (percent >= 75 and percent <= 90):
+        icon = ""
+        return icon
+    elif (percent >= 91 and percent <= 100):
+        icon = ""
+        return icon
+
+batt_icon()
+
+
+
 keys = [
 
 # SUPER + FUNCTION KEYS
@@ -309,9 +335,15 @@ def init_widgets_list():
                #          foreground = colors[2],
                #          background = colors[1]
                #          ),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
                widget.TextBox(
                         font="FontAwesome",
-                        text= " ",
+                        text= " ",
                         background=colors[1],
                         padding = 0,
                         fontsize=16
@@ -321,7 +353,7 @@ def init_widgets_list():
                         update_interval = 10,
                         fontsize = 12,
                         discharge_char = "",
-                        charge_char = "",
+                        charge_char = " ",
                         format='{char} {percent:2.0%}',
                         foreground = colors[5],
                         background = colors[1],
