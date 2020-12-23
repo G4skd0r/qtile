@@ -28,6 +28,7 @@
 import os
 import re
 import socket
+import psutil
 import subprocess
 from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
@@ -292,9 +293,25 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         ),
+               # widget.Wallpaper(
+               #          fontsize = 12,
+               #          directory = "/home/gast/Imágenes/wallpapers",
+               #          foreground = colors[5],
+               #          background = colors[1],
+               #          ),
+               # widget.CapsNumLockIndicator(
+               #          foreground = colors[5],
+               #          background = colors[1],
+               #          ),
+               # widget.Sep(
+               #          linewidth = 1,
+               #          padding = 10,
+               #          foreground = colors[2],
+               #          background = colors[1]
+               #          ),
                widget.TextBox(
                         font="FontAwesome",
-                        text="  ",
+                        text= " ",
                         background=colors[1],
                         padding = 0,
                         fontsize=16
@@ -303,6 +320,8 @@ def init_widgets_list():
                         font="Ubuntu",
                         update_interval = 10,
                         fontsize = 12,
+                        discharge_char = "",
+                        charge_char = "",
                         format='{char} {percent:2.0%}',
                         foreground = colors[5],
                         background = colors[1],
@@ -315,7 +334,7 @@ def init_widgets_list():
                         ),
                widget.TextBox(
                         font="FontAwesome",
-                        text="  ",
+                        text=" ",
                         background=colors[1],
                         padding = 0,
                         fontsize=16
@@ -324,7 +343,26 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         fontsize = 12,
-                        format="%H:%M %d/%m/%Y"
+                        format=" %H:%M "
+                        ),
+               widget.Sep(
+                        linewidth = 1,
+                        padding = 10,
+                        foreground = colors[2],
+                        background = colors[1]
+                        ),
+               widget.TextBox(
+                        font="FontAwesome",
+                        text=" ",
+                        background=colors[1],
+                        padding = 0,
+                        fontsize=16
+                        ),
+               widget.Clock(
+                        foreground = colors[5],
+                        background = colors[1],
+                        fontsize = 12,
+                        format="%d/%m/%Y"
                         ),
                widget.Sep(
                         linewidth = 1,
