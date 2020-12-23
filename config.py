@@ -63,10 +63,10 @@ keys = [
     Key([mod], "Return", lazy.spawn('alacritty')),
     Key([mod], "KP_Enter", lazy.spawn('alacritty')),
     Key([mod], "F1", lazy.spawn('vivaldi-stable')),
-    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'UbuntuMonoRegular:bold:pixelsize=14'")),
 # SUPER + SHIFT KEYS
 
-    Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+    Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'UbuntuMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
@@ -244,7 +244,7 @@ colors = init_colors()
 # WIDGETS FOR THE BAR
 
 def init_widgets_defaults():
-    return dict(font="Hack Nerd Font Regular",
+    return dict(font="Ubuntu Regular",
                 fontsize = 12,
                 padding = 2,
                 background=colors[1])
@@ -256,7 +256,7 @@ def init_widgets_list():
     widgets_list = [
                widget.GroupBox(font="FontAwesome",
                         fontsize = 18,
-                        margin_y = 0,
+                        margin_y = 2,
                         margin_x = 0,
                         padding_y = 6,
                         padding_x = 5,
@@ -277,7 +277,7 @@ def init_widgets_list():
                         background = colors[1]
                         ),
                widget.CurrentLayout(
-                        font = "Hack Nerd Font Bold",
+                        font = "Ubuntu Bold",
                         foreground = colors[5],
                         background = colors[1]
                         ),
@@ -287,7 +287,7 @@ def init_widgets_list():
                         foreground = colors[2],
                         background = colors[1]
                         ),
-               widget.WindowName(font="Hack Nerd Font",
+               widget.WindowName(font="Ubuntu",
                         fontsize = 12,
                         foreground = colors[5],
                         background = colors[1],
@@ -300,7 +300,7 @@ def init_widgets_list():
                         fontsize=16
                         ),
                widget.Battery(
-                        font="Hack Nerd Font",
+                        font="Ubuntu",
                         update_interval = 10,
                         fontsize = 12,
                         format='{char} {percent:2.0%}',
@@ -324,7 +324,7 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         fontsize = 12,
-                        format="%d-%m-%Y %H:%M"
+                        format="%H:%M %d/%m/%Y"
                         ),
                widget.Sep(
                         linewidth = 1,
@@ -338,9 +338,10 @@ def init_widgets_list():
                         padding = 4
                         ),
                widget.QuickExit(
+                        font="FontAwesome",
                         backgrounf=colors[1],
                         default_text="  ",
-                        countdown_format="[ {} s ]",
+                        countdown_format="[{}s]",
                         padding=4
                        ),
                 widget.Sep(
